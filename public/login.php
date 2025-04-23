@@ -12,7 +12,6 @@ $username = $_POST['username'] ?? '';
 $password = $_POST['password'] ?? '';
 
 if (isset($users[$username]) && password_verify($password, $users[$username]['password'])) {
-    session_start();
 
     $existingSession = $redis->get("user:session:$username");
 
