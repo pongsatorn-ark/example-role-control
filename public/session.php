@@ -7,10 +7,3 @@ session_set_cookie_params([
     'samesite' => 'Strict'
 ]);
 session_start();
-
-// Start the session with the above parameters
-session_start();
-
-// Sample session management (e.g., login or other actions)
-$_SESSION['username'] = 'exampleUser';
-echo "Session started for user: " . $_SESSION['username'];
