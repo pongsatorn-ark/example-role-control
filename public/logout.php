@@ -1,24 +1,13 @@
 <?php
 require 'session.php';
 
-// Unset all session variables
-$_SESSION = [];
+$redis = new Redis();
+$redis->connect('redis', 6379);
 
-// Destroy the session cookie
-if (ini_get("session.use_cookies")) {
-    $params = session_get_cookie_params();
-    setcookie(
-        session_name(),
-        '',
-        time() - 42000, // expired in the past
-        $params["path"],
-        $params["domain"],
-        $params["secure"],
-        $params["httponly"]
-    );
+if (isset($_SESSION['username'])) {
+    $redis->del("user:session:{$_SESSION['username']}");
 }
 
-// Destroy the session
 session_destroy();
 
 // Respond to the client
