@@ -9,7 +9,7 @@ services:
     depends_on:
       - php
     networks:
-      - appnet
+      - pentest
 
   php:
     build:
@@ -17,4 +17,7 @@ services:
     volumes:
       - ./public:/var/www/html
     networks:
-      - appnet
+      - pentest
+
+networks:
+  pentest: {}
