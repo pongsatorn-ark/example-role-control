@@ -9,7 +9,7 @@ $password = $_POST['password'] ?? '';
 if (isset($users[$username]) && password_verify($password, $users[$username]['password'])) {
 
     // Use the username to generate a unique session ID for each user
-    session_id($username);  // You can also use other unique identifiers, like user email or a random ID
+    session_id();  // You can also use other unique identifiers, like user email or a random ID
     session_start();        // Start the session with the custom ID
 
     $_SESSION['username'] = $username;
