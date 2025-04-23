@@ -20,4 +20,4 @@ services:
       - pentest
 
 networks:
-  pentest: {}
+  pentest:
