@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - ./public:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+    networks:
+      - appnet
+
+  php:
+    build:
+      context: ./php
+    volumes:
+      - ./public:/var/www/html
+    networks:
+      - appnet
+
+networks:
+  appnet:
