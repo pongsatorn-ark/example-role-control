@@ -10,10 +10,10 @@ $password = $_POST['password'] ?? '';
 
 if (isset($users[$username]) && password_verify($password, $users[$username]['password'])) {
 
-    // Use username as a custom session name
-    session_name("session_$username"); // Unique session name for each user
-    session_start(); // Start the session
-    
+    // Use the username to generate a unique session ID for each user
+    session_id($username);  // You can also use other unique identifiers, like user email or a random ID
+    session_start();        // Start the session with the custom ID
+
     $_SESSION['username'] = $username;
     $_SESSION['role'] = $users[$username]['role'];
 
