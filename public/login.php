@@ -1,7 +1,5 @@
 <?php
 
-require 'session.php';
-
 $users = require 'users.php';
 
 // Get posted email & password
