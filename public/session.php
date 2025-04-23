@@ -2,11 +2,8 @@
 session_set_cookie_params([
     'lifetime' => 0,
     'path' => '/',
-    'secure' => false,
+    'secure' => false, // set true if HTTPS
     'httponly' => true,
-    'samesite' => 'Strict'
+    'samesite' => 'Strict',
 ]);
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+session_start();
